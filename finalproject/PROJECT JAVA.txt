@@ -1,0 +1,723 @@
+package application;
+	
+import javafx.application.Application;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.control.CheckBox;
+
+/*import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;*/
+
+public class LoginPage extends Application {
+
+    
+	public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+
+    public void start(Stage primaryStage) {
+        Image backgroundImage = new Image("file:C:\\Users\\User\\Downloads\\download.jpg");
+
+        BackgroundImage background = new BackgroundImage(
+                backgroundImage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)
+        );
+        Background backgroundObj = new Background(background);
+
+        StackPane S1 = new StackPane();
+        S1.setAlignment(Pos.CENTER);
+        S1.setBackground(backgroundObj);
+        
+        
+        ///////////////////////////////////////
+        Rectangle R1 = new Rectangle(400, 600);
+        R1.setFill(Color.WHITE);
+
+        Label L1=new Label("Log In");
+        L1.setFont(Font.font("Ariel",FontWeight.NORMAL,FontPosture.REGULAR,30));
+        L1.setTextFill(Color.LIGHTSKYBLUE);
+        
+        Label L2=new Label("Don't have an account ?");
+        L2.setFont(Font.font("Ariel",FontWeight.NORMAL,FontPosture.REGULAR,15));
+        L2.setTextFill(Color.GREY);
+        
+        Hyperlink HL=new Hyperlink("Create an account");
+        HL.setFont(Font.font("Ariel",FontWeight.NORMAL,FontPosture.REGULAR,15));
+        HL.setTextFill(Color.BLUE);
+        HL.setStyle("-fx-border-color: transparent; -fx-underline: true;");
+        
+
+        	
+        HL.setOnAction (e -> {
+        	CreateAccount createAccount = new CreateAccount(primaryStage.getWidth(), primaryStage.getHeight());
+            Stage createAccountStage = new Stage();
+            createAccount.start(createAccountStage);
+            // You can also close the current stage if needed
+            primaryStage.close();
+        });
+   
+    
+
+        TextField TF1=new TextField();
+        TextField TF2=new TextField();
+        
+        TF1.setPromptText("Username");
+        TF2.setPromptText("Password");
+        
+        
+        TF1.setStyle( 
+                "-fx-font-family: 'Arial'; " +
+                "-fx-font-size: 12px; " +
+                "-fx-text-fill: BLACK;"
+        );
+        TF2.setStyle(
+                "-fx-font-family: 'Arial'; " +
+                "-fx-font-size: 12px; " +
+                "-fx-text-fill: BLACK;"
+        ); 
+        TF1.setEditable(true);
+        TF2.setEditable(true);
+        TF1.setMaxWidth(200);
+        TF2.setMaxWidth(200);
+        
+        
+        Button B=new Button("Sign in");
+        B.setTextFill(Color.WHITE);
+        
+        B.setStyle(
+                "-fx-background-color: LIGHTSKYBLUE; " +
+                "-fx-text-fill: WHITE; " +
+                "-fx-font-size: 14px; " +
+                "-fx-padding: 8px 16px; " +
+                "-fx-background-radius: 5px;"+
+                "-fx-min-width: 200px; " 
+                );
+        
+        CheckBox CH=new CheckBox("Remember password");
+        CH.setFont(Font.font("Ariel",FontWeight.NORMAL,FontPosture.REGULAR,13));
+
+
+        
+        HBox H1=new HBox(30);
+        H1.getChildren().addAll(B, CH);
+        H1.setAlignment(Pos.CENTER);
+
+        
+        VBox V1=new VBox(20);
+        V1.getChildren().addAll(L1,L2,HL,TF1,TF2,CH,B); 
+        V1.setPadding(new Insets(15,15,15,15));
+        V1.setAlignment(Pos.CENTER);
+
+        
+        StackPane S2=new StackPane();
+        S2.getChildren().addAll(R1,V1); 
+        
+        ///////////////////////////////////////
+        
+        Rectangle R2 = new Rectangle(600, 600);
+        R2.setFill(Color.LIGHTSKYBLUE);
+
+        Image I = new Image("file:C:\\Users\\User\\Downloads\\Capture-removebg-preview.png");
+
+        ImageView IV=new ImageView(I);
+        IV.setFitWidth(450);
+        IV.setFitHeight(450);
+
+        Label L6=new Label("                        MEDCO\nMEDICAL       CENTER");
+        L6.setAlignment(Pos.CENTER);
+        L6.setFont(Font.font("Times New Roman",FontWeight.BOLD,FontPosture.REGULAR,30));
+        L6.setTextFill(Color.WHITE);
+
+        Label L7=new Label("     Healing Starts Here\nYour Partner in Wellness");
+        L7.setFont(Font.font("Arial",FontWeight.NORMAL,FontPosture.REGULAR,20));
+        L7.setTextFill(Color.WHITE);
+        
+        StackPane S5 = new StackPane();
+        S5.getChildren().addAll(L7);
+        S5.setAlignment(Pos.BOTTOM_CENTER);
+        S5.setPadding(new Insets(0,0,115,0));
+        
+        StackPane S3=new StackPane();
+        S3.getChildren().addAll(R2,IV,L6,S5);
+
+        ///////////////////////////////////////
+        HBox H=new HBox(0);
+        H.getChildren().addAll(S3,S2);
+        H.setAlignment(Pos.CENTER);
+
+        
+        
+        StackPane S4 = new StackPane();
+        S4.getChildren().addAll(S1,H); 
+
+        
+
+        Scene scene = new Scene(S4);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+package application;
+
+import javafx.application.Application;
+import application.LoginPage;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import java.util.HashMap;
+import java.util.Map;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.control.CheckBox;
+
+public class CreateAccount extends Application {
+	
+	private double width;
+    private double height;
+
+    public CreateAccount(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+	
+    @Override
+  
+    public void start(Stage createAccountStage) {
+    	
+    	
+    	Image backgroundImage = new Image("file:C:\\Users\\User\\Downloads\\download.jpg");
+
+        BackgroundImage background = new BackgroundImage(
+                backgroundImage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)
+        );
+        Background backgroundObj = new Background(background);
+
+        StackPane S1 = new StackPane();
+        S1.setAlignment(Pos.CENTER);
+        S1.setBackground(backgroundObj);
+        
+        
+        ///////////////////////////////////////
+        Rectangle R1 = new Rectangle(400, 600);
+        R1.setFill(Color.WHITE);
+
+        Label L1=new Label("Create An Account");
+        L1.setFont(Font.font("Ariel",FontWeight.BOLD,FontPosture.REGULAR,30));
+        L1.setTextFill(Color.LIGHTSKYBLUE);
+        
+ 
+      
+    
+
+        TextField TF1=new TextField();
+        TextField TF2=new TextField();
+        TextField TF3=new TextField();
+        TextField TF4=new TextField();
+        TextField TF5=new TextField();
+        TextField TF6=new TextField();
+        TextField TF7=new TextField();
+        TextField TF8=new TextField();
+
+        String TextFieldStyle = 
+        		"-fx-font-family: 'Arial'; " +
+                "-fx-font-size: 12px; " +
+                "-fx-text-fill: BLACK; " +
+                "-fx-max-width: 200px;";
+        
+        TF1.setStyle(TextFieldStyle);
+        TF2.setStyle(TextFieldStyle);
+        TF3.setStyle(TextFieldStyle);
+        TF4.setStyle(TextFieldStyle);
+        TF8.setStyle(TextFieldStyle);
+
+
+        TF5.setStyle(
+        	"-fx-font-family: 'Arial'; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-text-fill: BLACK; " +
+                    "-fx-max-width: 150px;"
+        );
+        
+        TF6.setStyle("-fx-font-family: 'Arial'; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-text-fill: BLACK; " +
+                    "-fx-max-width: 50px;"
+        );
+        TF7.setStyle("-fx-font-family: 'Arial'; " +
+                "-fx-font-size: 12px; " +
+                "-fx-text-fill: BLACK; " +
+                "-fx-max-width: 150px;"
+    );
+        
+        
+        TF1.setEditable(true);
+        TF2.setEditable(true);
+        TF3.setEditable(true);
+        TF4.setEditable(true);
+        TF5.setEditable(false);
+        TF6.setEditable(false);
+        TF7.setEditable(true);
+        TF8.setEditable(true);
+
+        TF1.setPromptText("First Name");
+        TF2.setPromptText("Last Name");
+        TF3.setPromptText("Email Address");
+        TF4.setPromptText("Address");
+        TF5.setPromptText("Country");
+        TF6.setPromptText("Code");
+        TF7.setPromptText("Phone");
+        TF8.setPromptText("Password");
+
+  
+        ComboBox<String> CB=new ComboBox<>();
+        CB.setValue("Country");
+        CB.getItems().addAll("Iraq","Syria","Lebanon","UAE","Jordan");
+        CB.setPrefWidth(50);
+        
+
+        ComboBox<String> CB2=new ComboBox<>();
+        CB2.setValue("Country");
+        CB2.getItems().addAll("Iraq","Syria","Lebanon","UAE","Jordan");
+        CB2.setPrefWidth(50);
+        
+        Map<String, String> countryCodes = new HashMap<>();
+        countryCodes.put("Iraq", "+964");
+        countryCodes.put("Syria", "+963");
+        countryCodes.put("Lebanon", "+961");
+        countryCodes.put("UAE", "+971");
+        countryCodes.put("Jordan", "+962");
+        
+        CB.setOnAction(event -> {
+        	TF5.setText(CB.getValue());
+        	TF5.setStyle(
+            	"-fx-font-family: 'Arial'; " +
+                        "-fx-font-size: 12px; " +
+                        "-fx-text-fill: BLACK; " +
+                        "-fx-max-width: 150px;"
+        			);
+        	String selectedCountry = CB.getValue();
+        	String countryCode = countryCodes.get(selectedCountry);
+        	TF6.setText(countryCode);
+        	TF6.setStyle(
+        	        "-fx-font-family: 'Arial'; " +
+        	        "-fx-font-size: 12px; " +
+        	        "-fx-text-fill: BLACK; " +
+        	        "-fx-max-width: 50px;"
+        	    );
+        });
+       
+        
+
+        String ButtonStyle =
+                "-fx-background-color: LIGHTSKYBLUE; " +
+                "-fx-text-fill: WHITE; " +
+                "-fx-font-size: 14px; " +
+                "-fx-padding: 8px 16px; " +
+                "-fx-background-radius: 5px;"+
+                "-fx-min-width: 50px; ";
+        
+        Button B=new Button("Sign up");
+        
+        Button B2=new Button("Sign in");
+        
+        B.setStyle(ButtonStyle);
+        B2.setStyle(ButtonStyle);
+
+        B2.setOnAction(e -> {
+            LoginPage loginPage = new LoginPage();
+            Stage loginPageStage = new Stage();
+
+            loginPage.start(loginPageStage);
+            loginPageStage.setWidth(createAccountStage.getWidth());
+            loginPageStage.setHeight(createAccountStage.getHeight());
+
+            createAccountStage.close();
+        });
+         
+        HBox H1=new HBox(30);
+        H1.getChildren().addAll(B, B2);
+        H1.setAlignment(Pos.CENTER);
+        
+        
+        ToggleGroup Gender=new ToggleGroup();
+        
+        RadioButton RB1=new RadioButton("Male");
+        RadioButton RB2=new RadioButton("Female");
+        RadioButton RB3=new RadioButton("Prefer not to say");
+
+        RB1.setToggleGroup(Gender);
+        RB2.setToggleGroup(Gender);
+        RB3.setToggleGroup(Gender);
+
+        HBox H2=new HBox(15);
+        H2.getChildren().addAll(RB1,RB2,RB3);
+        H2.setAlignment(Pos.CENTER);
+        
+        HBox H3=new HBox(1);
+        H3.getChildren().addAll(TF5,CB);
+        H3.setAlignment(Pos.CENTER);
+        
+        HBox H4=new HBox(1);
+        H4.getChildren().addAll(TF6,TF7);
+        H4.setAlignment(Pos.CENTER);
+        
+        
+        VBox V1=new VBox(20);
+        V1.getChildren().addAll(L1,TF1,TF2,TF3,TF4,H2,H3,H4,TF8,H1); 
+        V1.setPadding(new Insets(15,15,15,15));
+        V1.setAlignment(Pos.CENTER);
+
+        
+        StackPane S2=new StackPane();
+        S2.getChildren().addAll(R1,V1); 
+        
+        ///////////////////////////////////////
+        
+        Rectangle R2 = new Rectangle(600, 600);
+        R2.setFill(Color.LIGHTSKYBLUE);
+
+        Image I = new Image("file:C:\\Users\\User\\Downloads\\Capture-removebg-preview.png");
+
+        ImageView IV=new ImageView(I);
+        IV.setFitWidth(450);
+        IV.setFitHeight(450);
+
+        Label L6=new Label("                        MEDCO\nMEDICAL       CENTER");
+        L6.setAlignment(Pos.CENTER);
+        L6.setFont(Font.font("Times New Roman",FontWeight.BOLD,FontPosture.REGULAR,30));
+        L6.setTextFill(Color.WHITE);
+
+        Label L7=new Label("     Healing Starts Here\nYour Partner in Wellness");
+        L7.setFont(Font.font("Arial",FontWeight.NORMAL,FontPosture.REGULAR,20));
+        L7.setTextFill(Color.WHITE);
+        
+        StackPane S5 = new StackPane();
+        S5.getChildren().addAll(L7);
+        S5.setAlignment(Pos.BOTTOM_CENTER);
+        S5.setPadding(new Insets(0,0,115,0));
+        
+        StackPane S3=new StackPane();
+        S3.getChildren().addAll(R2,IV,L6,S5);
+
+        ///////////////////////////////////////
+        HBox H=new HBox(0);
+        H.getChildren().addAll(S3,S2);
+        H.setAlignment(Pos.CENTER);
+
+        
+        
+        StackPane S4 = new StackPane();
+        S4.getChildren().addAll(S1,H); 
+
+        
+
+        
+        Scene scene = new Scene(S4,width,height);
+        createAccountStage.setTitle("Create Account");
+        createAccountStage.setScene(scene);
+        createAccountStage.show();
+    }
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+package application;
+	
+import javafx.application.Application;
+import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
+public class MedicalFile extends Application {
+	public static void main(String[] args) {
+		launch(args);
+	}
+	@Override
+	public void start(Stage primaryStage) {
+			VBox VMain = new VBox(40);
+
+			
+			
+			VBox V1 = new VBox();
+			StackPane s=new StackPane();
+			VBox V= new VBox(10);
+			HBox H=new HBox(30);
+						
+			Rectangle r=new Rectangle(450,30);
+
+			
+			ToggleGroup DataType = new ToggleGroup();
+			
+			RadioButton RB1=new RadioButton("Image Files");
+			RadioButton RB2=new RadioButton("NPY Files");
+			RadioButton RB3=new RadioButton("HDFS Files");		
+			RadioButton RB4=new RadioButton("Parquet Files");
+
+			RB1.setToggleGroup(DataType);
+			RB2.setToggleGroup(DataType);
+			RB3.setToggleGroup(DataType);
+			RB4.setToggleGroup(DataType);
+
+			H.getChildren().addAll(RB1,RB2,RB3,RB4);
+			H.setAlignment(Pos.CENTER_LEFT);
+			H.setPadding(new Insets(0,0,0,10));
+
+			s.setAlignment(Pos.TOP_LEFT);
+			s.getChildren().addAll(r,H);
+
+			
+			Text t=new Text("Data Type");
+			r.setFill(Color.LIGHTBLUE);
+			r.setStrokeWidth(1);
+			r.setStroke(Color.BLACK);
+			V.getChildren().addAll(t,s);
+			V1.getChildren().add(V);
+
+		
+			
+			StackPane s2=new StackPane();
+			VBox V2= new VBox(10);
+			HBox H2=new HBox(30);
+			
+			
+			ToggleGroup LabelType = new ToggleGroup();
+			
+			RadioButton rb1=new RadioButton("Single Label Prediction");
+			RadioButton rb2=new RadioButton("Multi Label Prediction");
+			
+			Rectangle r2=new Rectangle(450,30);
+			
+			rb1.setToggleGroup(LabelType);
+			rb2.setToggleGroup(LabelType);
+			
+			H2.getChildren().addAll(rb1,rb2);
+			H2.setAlignment(Pos.CENTER_LEFT);
+			H2.setPadding(new Insets(0,0,0,10));
+
+			s2.setAlignment(Pos.TOP_LEFT);
+			s2.getChildren().addAll(r2,H2);
+
+			Text t2=new Text("Label Type");
+			r2.setFill(Color.LIGHTBLUE);
+			r2.setStrokeWidth(1);
+			r2.setStroke(Color.BLACK);
+			V2.getChildren().addAll(t2,s2);
+
+			
+			Image I=new Image("file:\\Users\\User\\Downloads\\XRAY.jpg");
+			Image I2=new Image("file:\\Users\\User\\Downloads\\XRAY2.jpg");
+			Image I3=new Image("file:\\Users\\User\\Downloads\\XRAY3.jpg");
+			Image I4=new Image("file:\\Users\\User\\Downloads\\XRAY4.jpg");
+
+			ImageView IV=new ImageView(I);
+			IV.setFitWidth(40);
+			IV.setFitHeight(40);
+			
+			ImageView IV2=new ImageView(I2);
+			IV2.setFitWidth(40);
+			IV2.setFitHeight(40);
+			
+			ImageView IV3=new ImageView(I3);
+			IV3.setFitWidth(40);
+			IV3.setFitHeight(40);
+			
+			ImageView IV4=new ImageView(I4);
+			IV4.setFitWidth(40);
+			IV4.setFitHeight(40);
+			
+	        String[] imageTitles = {"Patient 1", "Patient 2", "Patient 3", "Patient 4" };
+
+			
+	        ComboBox<String> CB = new ComboBox<>();
+	        CB.setPromptText("Image Folder");
+	        CB.getItems().addAll(imageTitles);
+	        
+	        ImageView Imageview=new ImageView();
+	        Imageview.setFitWidth(400);
+			Imageview.setFitHeight(400);
+	        
+	        CB.setOnAction(e -> {
+	        	String selectedTitle = CB.getValue();
+	            Image selectedImage = getImageByTitle(selectedTitle);
+	            Imageview.setImage(selectedImage);
+	            });
+			
+			HBox H3=new HBox(10);
+			Text t3=new Text("Image Folder: ");
+			Button B=new Button("Select Folder");
+			H3.getChildren().addAll(t3,B);
+			
+			TextArea T1=new TextArea();
+			T1.setMaxWidth(350);
+			T1.setMaxHeight(200);
+			
+			Button B2=new Button("Predict");
+			
+			TextArea T2=new TextArea();
+			T2.setMaxWidth(500);
+			T2.setMaxHeight(200);
+			
+			ScrollPane scroll = new ScrollPane();
+	        scroll.setContent(T2);
+	        scroll.setMaxWidth(500);
+	        
+			Button next=new Button("next");
+			Button prev=new Button("previous");
+			
+			HBox H4=new HBox(10);
+			H4.getChildren().addAll(prev,next);
+			H4.setAlignment(Pos.CENTER);
+			
+			
+			
+			Button back=new Button("Back");
+			Button cont=new Button("Continue");
+			
+			HBox H5=new HBox(10);
+			H5.getChildren().addAll(back,cont);
+			H5.setAlignment(Pos.BASELINE_RIGHT);
+			
+			Label L1=new Label("img_name");
+			Label L2=new Label("type");
+			Label L3=new Label("probability");
+
+			
+			TextField TF1=new TextField();
+			TextField TF2=new TextField();
+			TextField TF3=new TextField();
+
+			VBox VV1=new VBox(10);
+			VBox VV2=new VBox(10);
+
+			VV1.getChildren().addAll(L1,L2,L3);
+			VV2.getChildren().addAll(TF1,TF2,TF3);
+
+			
+			HBox HH= new HBox(10);
+			HH.getChildren().addAll(VV1,VV2);
+			HH.setAlignment(Pos.CENTER);
+			
+			VBox VV3=new VBox(10);
+			VV3.getChildren().addAll(H4,HH,H5);
+
+			
+	        
+			VMain.setAlignment(Pos.TOP_LEFT);
+			VMain.setPadding(new Insets(30,30,30,30));
+			VMain.getChildren().addAll(V1,V2,CB,H3,T1,B2,T2,scroll);
+
+			
+			
+
+			VBox VVV=new VBox(200);
+			VVV.getChildren().addAll(Imageview,VV3);
+			
+			HBox HMain =new HBox(100);
+			HMain.getChildren().addAll(VMain,VVV);
+			
+			Scene scene = new Scene(HMain,600,600);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+	
+	}
+	
+	private Image getImageByTitle(String title) {
+        switch (title) {
+            case "Patient 1":
+                return new Image("file:\\Users\\User\\Downloads\\XRAY.jpg");
+            case "Patient 2":
+                return new Image("file:\\Users\\User\\Downloads\\XRAY2.jpg");
+            case "Patient 3":
+                return new Image("file:\\Users\\User\\Downloads\\XRAY3.jpg");
+            case "Patient 4":
+                return new Image("file:\\Users\\User\\Downloads\\XRAY4.jpg");
+            default:
+                return null;
+        }
+    }
+}
