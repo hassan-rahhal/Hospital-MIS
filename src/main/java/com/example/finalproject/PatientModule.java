@@ -183,22 +183,6 @@ public class PatientModule {
                     System.out.println("Please fill in all fields and select a gender.");
                 }
             }
-            // Add logic to save doctor information
-//            String firstName = firstNameTextField.getText();
-//            String fatherName = fatherNameTextField.getText();
-//            String lastName = lastNameTextField.getText();
-//            String gender = genderComboBox.getValue();
-//            String DOB = DOBTextField.getText();
-//            String id = idTextField.getText();
-//
-//
-//            // Add your logic to save or process the information
-//
-//            System.out.println("Patient Information Saved: " + firstName + " " + fatherName + " " +
-//                    lastName + " , Gender: " + gender + ", Date of Birth: " + DOB + ", ID: " + id);
-//
-//            // Close the module stage after saving
-//            patientStage.close();
         });
         Button exitBtn=new Button("Exit");
         exitBtn.setOnAction(e->{patientStage.close();});

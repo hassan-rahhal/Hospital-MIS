@@ -259,7 +259,7 @@ public class AppointmentModule {
         timecol.setMinWidth(66);
        timecol.setCellValueFactory(
                 new PropertyValueFactory<Appointment, String>("time"));
-        TableColumn patientCol = new TableColumn("Patient Name ");
+        TableColumn patientCol = new TableColumn("Patient ID ");
         patientCol.setMinWidth(99);
         patientCol.setCellValueFactory(
                 new PropertyValueFactory<Appointment, String>("patientID"));
